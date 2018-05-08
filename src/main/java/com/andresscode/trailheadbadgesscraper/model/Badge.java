@@ -9,6 +9,11 @@ package com.andresscode.trailheadbadgesscraper.model;
  * @see SuperBadge
  */
 public class Badge {
+    // Types of badges available for scraping
+    public static final String TYPE_MODULE = "Module";
+    public static final String TYPE_PROJECT = "Project";
+    public static final String TYPE_SUPERBADGE = "Superbadge";
+
     private final String type;
     private final String name;
     private final String href;

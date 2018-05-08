@@ -14,7 +14,7 @@ public class SuperBadgeTest {
         float minExpected = 1.00f;
         float maxExpected = 10.00f;
         float delta = 0.01f;
-        Assert.assertEquals(minExpected, superBadge.getHours().get(SuperBadge.MIN_HOURS), delta);
-        Assert.assertEquals(maxExpected, superBadge.getHours().get(SuperBadge.MAX_HOURS), delta);
+        Assert.assertEquals(minExpected, superBadge.getHours().getMin(), delta);
+        Assert.assertEquals(maxExpected, superBadge.getHours().getMax(), delta);
     }
 }
