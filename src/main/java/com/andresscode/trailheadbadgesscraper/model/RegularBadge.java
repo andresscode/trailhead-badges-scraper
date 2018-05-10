@@ -62,4 +62,10 @@ public class RegularBadge extends Badge {
     public float getHours() {
         return hours;
     }
+
+    @Override
+    public String toString() {
+        return String.format("RegularBadge {type: %s, name: %s, href: %s, hours: %.2f}",
+                this.getType(), this.getName(), this.getHref(), this.getHours());
+    }
 }

@@ -75,4 +75,10 @@ public class SuperBadge extends Badge {
             this.max = max;
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("SuperBadge {type: %s, name: %s, href: %s, hours: {min: %.2f, max: %.2f}}",
+                this.getType(), this.getName(), this.getHref(), this.getHours().getMin(), this.getHours().getMax());
+    }
 }

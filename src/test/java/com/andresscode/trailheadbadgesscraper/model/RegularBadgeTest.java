@@ -64,6 +64,14 @@ public class RegularBadgeTest {
         assertEquals(expected, hoursAndMinutes.getHours(), delta);
     }
 
+    @Test
+    public void toStringTest() {
+        String actual = minute.toString();
+        String expected = String.format("RegularBadge {type: %s, name: %s, href: %s, hours: %.2f}",
+                minute.getType(), minute.getName(), minute.getHref(), minute.getHours());
+        assertEquals(expected, actual);
+    }
+
     @Before
     public void setup() {
         delta = 0.01f;
