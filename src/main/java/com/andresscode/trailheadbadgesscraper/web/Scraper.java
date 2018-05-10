@@ -9,14 +9,16 @@ import java.util.List;
  *
  * Returns a list of Badges from a specific URL.
  *
- * @see ModuleScraper
+ * @see ScraperRegularBadge
  */
 public interface Scraper {
 
     /**
      * Get the badges from a specific URL.
      *
+     * @param url String containing the URL to scrap
+     *
      * @return A list of badges.
      */
-    List<Badge> getBadges();
+    List<Badge> getBadges(final String url);
 }

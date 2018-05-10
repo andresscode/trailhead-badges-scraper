@@ -13,30 +13,32 @@ import java.util.List;
 /**
  * @author Andres Martinez
  *
- * Navigates to the Modules section of Trailhead and extracts the data from every badge there.
+ * Navigates to the Modules or Projects section of Trailhead and extracts the data from every badge there.
  *
  * @see Scraper
  * @see ChromeDriver
  */
-public class ModuleScraper extends ChromeDriver implements Scraper {
-    public static final String URL = "https://trailhead.salesforce.com/en/modules";
+public class ScraperRegularBadge extends ChromeDriver implements Scraper {
+    public static final String URL_MODULES = "https://trailhead.salesforce.com/en/modules";
+    public static final String URL_PROJECTS = "https://trailhead.salesforce.com/en/projects";
 
-    public ModuleScraper() {}
+    public ScraperRegularBadge() {}
 
-    public ModuleScraper(final ChromeOptions options) {
+    public ScraperRegularBadge(final ChromeOptions options) {
         super(options);
     }
 
     /**
-     * Get the badges from the Module section
+     * Get the badges from the section in the URL.
      *
-     * @return A list of Module badges.
+     * @return A list of regular badges.
      */
-    public List<Badge> getBadges() {
+    @Override
+    public List<Badge> getBadges(final String url) {
         List<Badge> result = new ArrayList<>();
 
         // Navigate to modules URL
-        get(URL);
+        get(url);
 
         // Getting wrappers with the name, href and duration data
         List<WebElement> wrappers = findElements(By.cssSelector("div.tile-header"));

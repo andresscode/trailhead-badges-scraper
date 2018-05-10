@@ -8,19 +8,19 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
-public class ModuleScraperTest {
-    private ModuleScraper scraper;
+public class ScraperSuperBadgeTest {
+    private ScraperSuperBadge scraper;
 
     @Test
-    public void getBadgesTest() {
-        int expected = 327;
-        List<Badge> badges = scraper.getBadges();
+    public void getBadgesFromSuperBadgesTest() {
+        int expected = 11;
+        List<Badge> badges = scraper.getBadges(ScraperSuperBadge.URL_SUPERBADGES);
         Assert.assertEquals(expected, badges.size());
     }
 
     @Test
     public void constructorTest() {
-        ModuleScraper scraperWithHead = new ModuleScraper();
+        ScraperSuperBadge scraperWithHead = new ScraperSuperBadge(10);
         scraperWithHead.close();
         Assert.assertNotEquals(null, scraperWithHead);
     }
@@ -29,6 +29,6 @@ public class ModuleScraperTest {
     public void setup() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
-        scraper = new ModuleScraper(options);
+        scraper = new ScraperSuperBadge(10, options);
     }
 }
