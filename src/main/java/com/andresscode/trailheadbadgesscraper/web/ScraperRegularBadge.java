@@ -45,8 +45,9 @@ public class ScraperRegularBadge extends ChromeDriver implements Scraper {
 
         // Looping through all the wrappers and extracting and passing the
         // data to populate the list of badges
+        String type = (url.equals(URL_MODULES)) ? Badge.MODULE : Badge.PROJECT;
         wrappers.forEach(e -> result.add(new RegularBadge(
-                Badge.MODULE,
+                type,
                 e.findElement(By.tagName("a")).getAttribute("title"),
                 e.findElement(By.tagName("a")).getAttribute("href"),
                 e.findElement(By.className("progress-text")).getText())));
