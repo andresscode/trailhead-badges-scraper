@@ -1,5 +1,6 @@
 package com.andresscode.trailheadbadgesscraper;
 
+import com.andresscode.trailheadbadgesscraper.database.Config;
 import com.andresscode.trailheadbadgesscraper.database.Mongo;
 import com.andresscode.trailheadbadgesscraper.model.Badge;
 import com.andresscode.trailheadbadgesscraper.web.Scraper;
@@ -39,19 +40,20 @@ public class Main {
 
         // Updating database
         System.out.println("Initialising database");
-        Mongo db = new Mongo();
+        Config config = new Config();
+        Mongo db = new Mongo(config.getProperty("uri"), config.getProperty("database"), config.getProperty("collection"));
 
-        System.out.println("Updating Modules");
+        System.out.println("Updating Modules...");
         List<UpdateResult> resultModules = db.update(modules);
         resultModules.forEach(System.out::println);
         System.out.println(String.format("%d Modules updated", resultModules.size()));
 
-        System.out.println("Updating Projects");
+        System.out.println("Updating Projects...");
         List<UpdateResult> resultProjects = db.update(projects);
         resultProjects.forEach(System.out::println);
         System.out.println(String.format("%d Projects updated", resultProjects.size()));
 
-        System.out.println("Updating SuperBadges");
+        System.out.println("Updating SuperBadges...");
         List<UpdateResult> resultSuperBadges = db.update(superBadges);
         resultSuperBadges.forEach(System.out::println);
         System.out.println(String.format("%d SuperBadges updated", resultSuperBadges.size()));

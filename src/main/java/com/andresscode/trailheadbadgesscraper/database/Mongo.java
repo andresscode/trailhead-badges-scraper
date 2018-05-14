@@ -32,11 +32,15 @@ public class Mongo extends MongoClient {
     /**
      * Establish the connection with the MongoDB instance from MongoLab in Heroku, then setups the database and
      * collection that will be used.
+     *
+     * @param uri The string for the connection
+     * @param database The name of the database
+     * @param collection The name of the collection
      */
-    public Mongo() {
-        super(new MongoClientURI("mongodb://heroku_prsc52xb:mgairgbbst9aj3d3jthe0k2p6a@ds121535.mlab.com:21535/heroku_prsc52xb"));
-        this.database = this.getDatabase("heroku_prsc52xb");
-        this.collection = this.database.getCollection("badges");
+    public Mongo(final String uri, final String database, final String collection) {
+        super(new MongoClientURI(uri));
+        this.database = this.getDatabase(database);
+        this.collection = this.database.getCollection(collection);
     }
 
     /**
