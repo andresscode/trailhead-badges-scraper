@@ -30,7 +30,8 @@ public class MongoTest {
 
     @Before
     public void setup() {
-        db = new Mongo();
+        Config config = new Config();
+        db = new Mongo(config.getProperty("uri"), config.getProperty("database"), config.getProperty("collection"));
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         regularBadgeScraper = new ScraperRegularBadge(options);
