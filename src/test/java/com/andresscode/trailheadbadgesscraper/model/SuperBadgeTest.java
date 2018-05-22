@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class SuperBadgeTest {
     private SuperBadge superBadge;
+    private SuperBadge superBadgeToFormatHref;
 
     @Test
     public void convertToHoursTest() {
@@ -24,6 +25,14 @@ public class SuperBadgeTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void toStringFormattedTest() {
+        String actual = superBadgeToFormatHref.toString();
+        String expected = String.format("SuperBadge {type: %s, name: %s, href: %s, hours: {min: %.2f, max: %.2f}}",
+                superBadgeToFormatHref.getType(), superBadgeToFormatHref.getName(), superBadgeToFormatHref.getHref(), superBadgeToFormatHref.getHours().getMin(), superBadgeToFormatHref.getHours().getMax());
+        Assert.assertEquals(expected, actual);
+    }
+
     @Before
     public void setup() {
         String type = "Type";
@@ -31,5 +40,8 @@ public class SuperBadgeTest {
         String href = "http://type/name";
         String duration = "Duration: 1 hr - 10 hrs Estimated";
         superBadge = new SuperBadge(type, name, href, duration);
+
+        String hrefToFormat = "http://type/en/name";
+        superBadgeToFormatHref = new SuperBadge(type, name, hrefToFormat, duration);
     }
 }
