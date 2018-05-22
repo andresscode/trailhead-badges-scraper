@@ -21,7 +21,7 @@ public abstract class Badge {
     public Badge(final String type, final String name, final String href) {
         this.type = type;
         this.name = name;
-        this.href = href;
+        this.href = formatHref(href);
     }
 
     public String getType() {
@@ -34,5 +34,25 @@ public abstract class Badge {
 
     public String getHref() {
         return href;
+    }
+
+    /**
+     * Checks if the URL has a language specification like this:
+     *
+     * https://trailhead.salesforce.com/en/modules
+     *
+     * To remove it and format the URL to something like this:
+     *
+     * https://trailhead.salesforce.com/modules
+     *
+     * @param   href A string with the URL to format
+     * @return  The formatted URL string
+     */
+    private String formatHref(final String href) {
+        if (href.contains("/en/")) {
+            return href.replace("/en/", "/");
+        } else {
+            return href;
+        }
     }
 }
