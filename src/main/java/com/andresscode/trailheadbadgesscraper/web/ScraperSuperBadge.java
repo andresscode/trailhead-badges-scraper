@@ -57,12 +57,16 @@ public class ScraperSuperBadge extends ChromeDriver implements Scraper {
             linksText.add(e.getText());
         }
 
+        // Close the cookies banner
+        WebElement closeCookiesOverlay = findElement(By.cssSelector("a[title=\"close\"]"));
+        closeCookiesOverlay.click();
+
         // Iterating over every badge anchor
         for (String s : linksText) {
             WebElement link = wait.until(ExpectedConditions.elementToBeClickable(By.linkText(s)));
             String href = link.getAttribute("href");
             link.click();
-            WebElement durationText = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h5[contains(text(),'Duration')]")));
+            WebElement durationText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[contains(text(),'Duration')]")));
             badges.add(new SuperBadge(Badge.SUPERBADGE, s, href, durationText.getText()));
             navigate().back();
         }
