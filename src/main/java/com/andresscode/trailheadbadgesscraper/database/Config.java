@@ -6,7 +6,7 @@ import java.util.Properties;
 /**
  * @author Andres Martinez
  *
- * Returns the data contained in the config.cfg file.
+ * Returns the data contained in the config.properties file.
  *
  * @see Properties
  */
@@ -16,14 +16,14 @@ public class Config {
     public Config() {
         this.properties = new Properties();
         try {
-            this.properties.load(this.getClass().getClassLoader().getResourceAsStream("config.cfg"));
+            this.properties.load(this.getClass().getClassLoader().getResourceAsStream("config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Returns the value of a property stored in the config.cfg file.
+     * Returns the value of a property stored in the config.properties file.
      *
      * @param key The property Key
      * @return The property value

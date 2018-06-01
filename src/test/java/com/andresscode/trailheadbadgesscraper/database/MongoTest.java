@@ -22,7 +22,7 @@ public class MongoTest {
 
     @Test
     public void updateProjectsTest() {
-        int expected = 61;
+        int expected = 66;
         List<Badge> badges = regularBadgeScraper.getBadges(ScraperRegularBadge.URL_PROJECTS);
         List<UpdateResult> results = db.update(badges);
         Assert.assertEquals(expected, results.size());
