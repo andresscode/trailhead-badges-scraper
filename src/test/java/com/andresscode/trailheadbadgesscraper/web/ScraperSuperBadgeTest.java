@@ -13,7 +13,7 @@ public class ScraperSuperBadgeTest {
 
     @Test
     public void getBadgesFromSuperBadgesTest() {
-        int expected = 11;
+        int expected = 12;
         List<Badge> badges = scraper.getBadges(ScraperSuperBadge.URL_SUPERBADGES);
         Assert.assertEquals(expected, badges.size());
     }

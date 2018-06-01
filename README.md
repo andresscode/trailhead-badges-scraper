@@ -5,6 +5,12 @@
 This Java application has been created to get the data in [Trailhead.com](https://trailhead.salesforce.com)
 from every badge to be stored in a NoSQL database.
 
+## Configuration
+
+* application.properties with the next parameters: uri (to connect to the database host), database (name),
+collection (name), and test (a test value for JUnit).
+* [ChromeDriver](https://chromedriver.storage.googleapis.com/index.html) installed.
+
 ## Badges
 
 [Trailhead.com](https://trailhead.salesforce.com) has three different types
